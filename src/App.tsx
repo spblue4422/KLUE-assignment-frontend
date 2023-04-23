@@ -7,7 +7,10 @@ function App() {
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route path="/reports" element={<ReportListPage />}></Route>
+				<Route
+					path="/reports/:pageNum"
+					element={<ReportListPage />}
+				></Route>
 				<Route
 					path="/report/:reportId"
 					element={<ReportDetailPage />}
