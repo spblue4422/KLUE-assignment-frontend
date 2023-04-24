@@ -15,10 +15,10 @@ export interface ILecutreEval {
 	starAchievement: number;
 	starCompetency: number;
 	recommendationFlag: boolean;
-	content: String;
+	content: string;
 	state: LectureEvalStateType;
-	createdAt: Date;
-	updatedAt: Date;
+	createdAt: string;
+	updatedAt: string;
 	likeCount: number;
 	dislikeCount: number;
 	accusationCount: number;

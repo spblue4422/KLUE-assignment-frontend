@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const KlueTitle = styled.link``;
-const UserName = styled.link``;
+const KlueTitle = styled(Link)``;
+const UserName = styled.p``;
 
 const HeaderContainer = styled.div`
 	width: full;
@@ -18,7 +19,7 @@ const HeaderContainer = styled.div`
 const Header: React.FC = () => {
 	return (
 		<HeaderContainer>
-			<KlueTitle>KLUE</KlueTitle>
+			<KlueTitle to={'/reports/1'}>KLUE</KlueTitle>
 			<UserName>spblue4422</UserName>
 		</HeaderContainer>
 	);

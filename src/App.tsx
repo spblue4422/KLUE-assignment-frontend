@@ -1,22 +1,20 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import ReportListPage from './pages/ReportListPage';
 import ReportDetailPage from './pages/ReportDetailPage';
 
 function App() {
 	return (
-		<BrowserRouter>
 			<Routes>
 				<Route
-					path="/reports/:pageNum"
+					path="/admin/reports/:pageNum"
 					element={<ReportListPage />}
 				></Route>
 				<Route
-					path="/report/:reportId"
+					path="/admin/report/:reportId"
 					element={<ReportDetailPage />}
 				></Route>
 			</Routes>
-		</BrowserRouter>
 	);
 }
 

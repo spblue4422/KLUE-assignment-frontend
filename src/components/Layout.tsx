@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useState } from 'react';
+import React, { PropsWithChildren } from 'react';
 import styled from 'styled-components';
 import Header from './Header';
 import Footer from './Footer';
@@ -7,7 +7,7 @@ const Container = styled.div`
 	width: full;
 	height: 100vh;
 	display: flex;
-	flex-diretion: column;
+	flex-direction: column;
 `;
 
 const ContentsContainer = styled.div`

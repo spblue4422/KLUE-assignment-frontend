@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import Layout from '../components/Layout';
 import { IReport } from '../interface/IReport';
 import { useParams } from 'react-router-dom';
 import Pagination from '../components/Pagination';
 import { IReportList } from '../interface/IReportList';
 import { Link } from 'react-router-dom';
+import { DateToString } from '../utils/DateToString';
 
 const ReportListContainer = styled.ul``;
 
@@ -18,6 +18,8 @@ const ReportListItem = styled.li`
 const ReportListPage: React.FC = () => {
 	const { pageNum } = useParams();
 	const [data, setData] = useState({} as IReportList);
+	const pageVar =
+		!pageNum || typeof pageNum === 'undefined' ? 1 : parseInt(pageNum);
 
 	useEffect(() => {
 		axios({
@@ -32,35 +34,38 @@ const ReportListPage: React.FC = () => {
 			},
 			withCredentials: false,
 		})
-			.then((res) => setData(res.data.data))
+			.then((res) => setData(res.data))
 			.catch((err) => {
 				alert('에러 발생');
 				console.log(err);
 			});
-	}, []);
+	}, [pageNum]);
 	//pagingDto - page: 페이지 번호, count: 가져올 개수
 
 	return (
-		<Layout>
+		<>
 			<ReportListContainer>
-				{data.data.map((dt, idx) => (
-					<ReportListItem>
-						<Link to={`/admin/report/${dt.reportId}`}>
-							<p>{dt.category}</p>
-							<p>{dt.createdAt.toString()}</p>
-							<p>{dt.username}</p>
-							<p>{dt.content}</p>
-							<p>{dt.state}</p>
-							<p>{dt.answeredAt.toString()}</p>
-						</Link>
-					</ReportListItem>
-				))}
+				{data.data &&
+					data.data.map((dt, idx) => (
+						<ReportListItem>
+							<Link to={`/admin/report/${dt.reportId}`}>
+								<p>{dt.category}</p>
+								<p>{DateToString(dt.createdAt)}</p>
+								<p>{dt.username}</p>
+								<p>{dt.content}</p>
+								<p>{dt.state}</p>
+								<p>{DateToString(dt.answeredAt)}</p>
+							</Link>
+						</ReportListItem>
+					))}
 			</ReportListContainer>
-			<Pagination
-				page={pageNum} // currentPage
-				totalCount={data.totalCount}
-			></Pagination>
-		</Layout>
+			{/* {data && (
+				<Pagination
+					page={pageVar} // currentPage
+					totalCount={data.totalCount}
+				></Pagination>
+			)} */}
+		</>
 	);
 };
 

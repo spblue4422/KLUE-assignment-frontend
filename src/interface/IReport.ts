@@ -3,11 +3,11 @@ import { ReportStateType } from '../type';
 export interface IReport {
 	reportId: number;
 	userId: number;
-	username: String;
-	category: String;
-	content: String;
-	createdAt: Date;
-	managerAnswer: String;
-	answeredAt: Date;
+	username: string;
+	category: string;
+	content: string;
+	createdAt: string;
+	managerAnswer: string;
+	answeredAt: string;
 	state: ReportStateType;
 }

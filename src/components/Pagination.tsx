@@ -40,7 +40,7 @@ const PaginationRightArrow = styled(Link)``;
 const Pagination: React.FC<PaginationProps> = (props: PaginationProps) => {
 	const { page, totalCount } = props;
 
-	const totalPage = totalCount % 15 ? totalCount / 15 + 1 : totalCount / 15;
+	const totalPage = totalCount % 15 !== 0 ? totalCount / 15 + 1 : totalCount / 15;
 	const startNum = (page / 10) * 10;
 	const paginationCount =
 		totalPage - startNum >= 10 ? 10 : totalPage - startNum;
