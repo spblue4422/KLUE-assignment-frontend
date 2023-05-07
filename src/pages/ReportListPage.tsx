@@ -59,12 +59,12 @@ const ReportListPage: React.FC = () => {
 						</ReportListItem>
 					))}
 			</ReportListContainer>
-			{/* {data && (
+			{data && (
 				<Pagination
 					page={pageVar} // currentPage
 					totalCount={data.totalCount}
 				></Pagination>
-			)} */}
+			)}
 		</>
 	);
 };
