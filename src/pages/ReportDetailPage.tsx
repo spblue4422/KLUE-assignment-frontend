@@ -11,38 +11,7 @@ const LectureEvalContainer = styled.div``;
 
 const ReportDetailPage: React.FC = () => {
 	const { reportId } = useParams();
-	//report data를 받아와서 넣어야함
-	const [data, setData] = useState({
-		// reportId: 0,
-		// userId: 0,
-		// username: '',
-		// category: '',
-		// content: '',
-		// createdAt: '',
-		// managerAnswer: '',
-		// answeredAt: '',
-		// state: 'UNRESOLVED',
-		// lectureEval: {
-		// 	lectureEvalId: 0,
-		// 	userId: 0,
-		// 	starTotal: 0,
-		// 	starAttendance: 'NEVER',
-		// 	starGrade: 'AVERAGE',
-		// 	starDifficulty: 0,
-		// 	starStudyTime: 0,
-		// 	starAchievement: 0,
-		// 	starCompetency: 0,
-		// 	recommendationFlag: false,
-		// 	content: '',
-		// 	state: 'NORMAL',
-		// 	createdAt: '',
-		// 	updatedAt: '',
-		// 	likeCount: 0,
-		// 	dislikeCount: 0,
-		// 	accusationCount: 0,
-		// 	version: 0,
-		// },
-	} as IReportLectureEval);
+	const [data, setData] = useState({} as IReportLectureEval);
 
 	useEffect(() => {
 		axios({

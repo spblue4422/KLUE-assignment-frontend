@@ -42,7 +42,7 @@ const Pagination: React.FC<PaginationProps> = (props: PaginationProps) => {
 
 	const totalPage =
 		totalCount % 15 !== 0 ? totalCount / 15 + 1 : totalCount / 15;
-	const startNum = (page / 10) * 10;
+	const startNum = Math.floor((page - 1) / 10) * 10;
 	const paginationCount =
 		totalPage - startNum >= 10 ? 10 : totalPage - startNum;
 
@@ -51,7 +51,7 @@ const Pagination: React.FC<PaginationProps> = (props: PaginationProps) => {
 			{startNum === 0 ? (
 				''
 			) : (
-				<PaginationLeftArrow to={`/admin/reports/${startNum - 10}`}>
+				<PaginationLeftArrow to={`/admin/reports/${startNum}`}>
 					{'<'}
 				</PaginationLeftArrow>
 			)}
@@ -60,17 +60,17 @@ const Pagination: React.FC<PaginationProps> = (props: PaginationProps) => {
 						.fill(0)
 						.map((dt, idx) => (
 							<PaginationButton
-								isCurrent={page === startNum + idx}
-								to={`/admin/reports/${startNum + idx}`}
+								isCurrent={page === startNum + idx + 1}
+								to={`/admin/reports/${startNum + idx + 1}`}
 							>
-								{startNum + idx}
+								{startNum + idx + 1}
 							</PaginationButton>
 						))
 				: ''}
 			{totalPage - startNum <= 10 ? (
 				''
 			) : (
-				<PaginationRightArrow to={`/admin/reports/${startNum + 10}`}>
+				<PaginationRightArrow to={`/admin/reports/${startNum + 11}`}>
 					{'>'}
 				</PaginationRightArrow>
 			)}

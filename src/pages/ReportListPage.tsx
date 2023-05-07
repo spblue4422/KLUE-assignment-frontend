@@ -40,7 +40,6 @@ const ReportListPage: React.FC = () => {
 				console.log(err);
 			});
 	}, [pageNum]);
-	//pagingDto - page: 페이지 번호, count: 가져올 개수
 
 	return (
 		<>
