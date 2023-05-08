@@ -48,6 +48,7 @@ const ReportListPage: React.FC = () => {
 					data.data.map((dt, idx) => (
 						<ReportListItem>
 							<Link to={`/admin/report/${dt.reportId}`}>
+								<p>{dt.reportId}</p>
 								<p>{dt.category}</p>
 								<p>{DateToString(dt.createdAt)}</p>
 								<p>{dt.username}</p>

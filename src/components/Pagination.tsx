@@ -41,7 +41,9 @@ const Pagination: React.FC<PaginationProps> = (props: PaginationProps) => {
 	const { page = 0, totalCount = 0 } = props;
 
 	const totalPage =
-		totalCount % 15 !== 0 ? totalCount / 15 + 1 : totalCount / 15;
+		totalCount % 15 !== 0
+			? Math.floor(totalCount / 15) + 1
+			: Math.floor(totalCount / 15);
 	const startNum = Math.floor((page - 1) / 10) * 10;
 	const paginationCount =
 		totalPage - startNum >= 10 ? 10 : totalPage - startNum;
