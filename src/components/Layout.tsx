@@ -12,7 +12,7 @@ const Container = styled.div`
 
 const ContentsContainer = styled.div`
 	width: full;
-	margin: 10vw 20vw;
+	margin: 2vw 20vw;
 	min-width: 480px;
 `;
 
@@ -21,6 +21,7 @@ const Layout: React.FC<PropsWithChildren> = (props: PropsWithChildren) => {
 		<Container>
 			<Header></Header>
 			<ContentsContainer>{props.children}</ContentsContainer>
+			<Footer></Footer>
 		</Container>
 	);
 };

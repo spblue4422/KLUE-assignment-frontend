@@ -7,7 +7,10 @@ import { DateToString } from '../utils/DateToString';
 
 const ReportContainer = styled.div``;
 
-const LectureEvalContainer = styled.div``;
+const LectureEvalContainer = styled.div`
+	padding: 0px;
+	border: 1px solid;
+`;
 
 const ReportDetailPage: React.FC = () => {
 	const { reportId } = useParams();
@@ -31,24 +34,61 @@ const ReportDetailPage: React.FC = () => {
 	return (
 		<>
 			<ReportContainer>
+				<h1>신고 내역 - {reportId}</h1>
 				{data && (
 					<>
-						<p>{data.username}</p>
-						<p>{data.category}</p>
-						<p>{DateToString(data.createdAt)}</p>
-						<p>{data.content}</p>
-						<p>{data.managerAnswer}</p>
-						<p>{DateToString(data.answeredAt)}</p>
-						<p>{data.state}</p>
+						<div>
+							<h4>신고자 ID</h4>
+							<p>{data.username}</p>
+						</div>
+						<div>
+							<h4>신고 카테고리</h4>
+							<p>{data.category}</p>
+						</div>
+						<div>
+							<h4>신고 일자</h4>
+							<p>{DateToString(data.createdAt)}</p>
+						</div>
+						<div>
+							<h4>신고 내용</h4>
+							<p>{data.content}</p>
+						</div>
+						<div>
+							<h4>답변 상태</h4>
+							<p>{data.state}</p>
+						</div>
+						{data.state === 'RESOLVED' ? (
+							<>
+								<div>
+									<h4>답변 내용</h4>
+									<p>{data.managerAnswer}</p>
+								</div>
+								<div>
+									<h4>답변 일자</h4>
+									<p>{DateToString(data.answeredAt)}</p>
+								</div>
+							</>
+						) : (
+							''
+						)}
 					</>
 				)}
 			</ReportContainer>
 			<LectureEvalContainer>
 				{data.lectureEval && (
 					<>
-						<p>{data.lectureEval.content}</p>
-						<p>{data.lectureEval.state}</p>
-						<p>{DateToString(data.lectureEval.createdAt)}</p>
+						<div>
+							<h4>강의 평가 내용</h4>
+							<p>{data.lectureEval.content}</p>
+						</div>
+						<div>
+							<h4>강의 평가 등록 일자</h4>
+							<p>{DateToString(data.lectureEval.createdAt)}</p>
+						</div>
+						<div>
+							<h4>강의 평가 현재 상태</h4>
+							<p>{data.lectureEval.state}</p>
+						</div>
 					</>
 				)}
 			</LectureEvalContainer>
