@@ -17,6 +17,7 @@ const ReportListItem = styled.li`
 	border-top: solid 1px;
 `;
 
+// 체이닝좀 작작쓰자
 const ReportListPage: React.FC = () => {
 	const { pageNum } = useParams();
 	const [data, setData] = useState({} as IReportList);
@@ -65,11 +66,14 @@ const ReportListPage: React.FC = () => {
 									textDecorationLine: 'none',
 								}}
 							>
-								<p>{dt.reportId} / {dt.username} / {dt.category}</p>
+								<p>
+									{dt.reportId} / {dt.username} /{' '}
+									{dt.category}
+								</p>
 								<p>신고 일자 - {DateToString(dt.createdAt)}</p>
 								{/* <p>{dt.content.slice(0, 20)}</p> */}
 								<p>
-									{dt.state} 
+									{dt.state}
 									{dt.state === 'RESOLVED'
 										? ` - ${DateToString(dt.answeredAt)}`
 										: ''}

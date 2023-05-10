@@ -1,13 +1,13 @@
-import React, { PropsWithChildren, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-interface PaginationProps extends PropsWithChildren {
+interface PaginationProps {
 	page: number; // currentPage
 	totalCount: number;
 }
 
-interface PaginationButtonProps extends PropsWithChildren {
+interface PaginationButtonProps {
 	isCurrent: boolean;
 }
 
@@ -40,6 +40,8 @@ const PaginationRightArrow = styled(Link)``;
 const Pagination: React.FC<PaginationProps> = (props: PaginationProps) => {
 	const { page = 0, totalCount = 0 } = props;
 
+	// 아래 계산부분 좀 축소
+	// 변수명 지을 때 의미가 잘 나타나게 짓자
 	const totalPage =
 		totalCount % 15 !== 0
 			? Math.floor(totalCount / 15) + 1
@@ -50,6 +52,7 @@ const Pagination: React.FC<PaginationProps> = (props: PaginationProps) => {
 
 	return (
 		<PaginationContainer>
+			{/* && 처리 */}
 			{startNum === 0 ? (
 				''
 			) : (
@@ -60,8 +63,10 @@ const Pagination: React.FC<PaginationProps> = (props: PaginationProps) => {
 			{paginationCount > 0
 				? Array(paginationCount)
 						.fill(0)
+						// fill undefined
 						.map((dt, idx) => (
 							<PaginationButton
+								// startNum + idx + 1을 변수로 정해두면 좋지 않을까
 								isCurrent={page === startNum + idx + 1}
 								to={`/admin/reports/${startNum + idx + 1}`}
 							>
@@ -69,6 +74,7 @@ const Pagination: React.FC<PaginationProps> = (props: PaginationProps) => {
 							</PaginationButton>
 						))
 				: ''}
+			{/* 마찬가지로 && 처리 */}
 			{totalPage - startNum <= 10 ? (
 				''
 			) : (

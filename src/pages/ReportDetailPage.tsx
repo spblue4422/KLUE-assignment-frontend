@@ -12,6 +12,7 @@ const LectureEvalContainer = styled.div`
 	border: 1px solid;
 `;
 
+// 체이닝좀 작작쓰자
 const ReportDetailPage: React.FC = () => {
 	const { reportId } = useParams();
 	const [data, setData] = useState({} as IReportLectureEval);
