@@ -19,9 +19,9 @@ const ContentsContainer = styled.div`
 const Layout: React.FC<PropsWithChildren> = (props: PropsWithChildren) => {
 	return (
 		<Container>
-			<Header></Header>
+			<Header />
 			<ContentsContainer>{props.children}</ContentsContainer>
-			<Footer></Footer>
+			<Footer />
 		</Container>
 	);
 };

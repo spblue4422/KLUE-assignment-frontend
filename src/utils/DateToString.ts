@@ -1,4 +1,4 @@
-export const DateToString = (date: string) => {
+export const dateToString = (date: string) => {
 	if (!date) return '';
 
 	const ymd = date.slice(0, 10);

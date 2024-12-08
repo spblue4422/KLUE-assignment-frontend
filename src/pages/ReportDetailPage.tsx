@@ -3,7 +3,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import { IReportLectureEval } from '../interface/IReportLectureEval';
-import { DateToString } from '../utils/DateToString';
+import { dateToString } from '../utils/DateToString';
 
 const ReportContainer = styled.div``;
 
@@ -15,7 +15,7 @@ const LectureEvalContainer = styled.div`
 // 체이닝좀 작작쓰자
 const ReportDetailPage: React.FC = () => {
 	const { reportId } = useParams();
-	const [data, setData] = useState({} as IReportLectureEval);
+	const [data, setData] = useState<IReportLectureEval>();
 
 	useEffect(() => {
 		axios({
@@ -48,7 +48,7 @@ const ReportDetailPage: React.FC = () => {
 						</div>
 						<div>
 							<h4>신고 일자</h4>
-							<p>{DateToString(data.createdAt)}</p>
+							<p>{dateToString(data.createdAt)}</p>
 						</div>
 						<div>
 							<h4>신고 내용</h4>
@@ -66,7 +66,7 @@ const ReportDetailPage: React.FC = () => {
 								</div>
 								<div>
 									<h4>답변 일자</h4>
-									<p>{DateToString(data.answeredAt)}</p>
+									<p>{dateToString(data.answeredAt)}</p>
 								</div>
 							</>
 						) : (
@@ -76,7 +76,7 @@ const ReportDetailPage: React.FC = () => {
 				)}
 			</ReportContainer>
 			<LectureEvalContainer>
-				{data.lectureEval && (
+				{data && (
 					<>
 						<div>
 							<h4>강의 평가 내용</h4>
@@ -84,7 +84,7 @@ const ReportDetailPage: React.FC = () => {
 						</div>
 						<div>
 							<h4>강의 평가 등록 일자</h4>
-							<p>{DateToString(data.lectureEval.createdAt)}</p>
+							<p>{dateToString(data.lectureEval.createdAt)}</p>
 						</div>
 						<div>
 							<h4>강의 평가 현재 상태</h4>

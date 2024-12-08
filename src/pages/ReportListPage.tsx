@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import Pagination from '../components/Pagination';
 import { IReportList } from '../interface/IReportList';
 import { Link } from 'react-router-dom';
-import { DateToString } from '../utils/DateToString';
+import { dateToString } from '../utils/DateToString';
 
 const ReportListContainer = styled.ul`
 	list-style: none;
@@ -43,7 +43,7 @@ const ReportListPage: React.FC = () => {
 		})
 			.then((res) => {
 				setData(res.data);
-				// if (Math.ceil(data.totalCount / 15) < pageVar) {
+				// if (Math.ceil(res.data.totalCount / 15) < pageVar) {
 				// 	window.location.replace(`http://localhost:3000/admin/reports/${pageVar}`);
 				// }
 			})
@@ -70,12 +70,12 @@ const ReportListPage: React.FC = () => {
 									{dt.reportId} / {dt.username} /{' '}
 									{dt.category}
 								</p>
-								<p>신고 일자 - {DateToString(dt.createdAt)}</p>
+								<p>신고 일자 - {dateToString(dt.createdAt)}</p>
 								{/* <p>{dt.content.slice(0, 20)}</p> */}
 								<p>
 									{dt.state}
 									{dt.state === 'RESOLVED'
-										? ` - ${DateToString(dt.answeredAt)}`
+										? ` - ${dateToString(dt.answeredAt)}`
 										: ''}
 								</p>
 							</Link>
